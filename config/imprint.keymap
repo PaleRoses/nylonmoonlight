@@ -15,20 +15,22 @@
 
         /* ──────────────────────────────── Default Layer ─────────────────────────────── */
         default_layer {
-            /* —— Layout exactly as shown in the image (6×12) —— */
+            /* —— Layout matching latest user spec —— */
             bindings = <
-/* Row 0 */
-&kp ESC   &kp N1   &kp F     &kp L     &kp N4   &kp N5            &kp N6   &kp N7   &kp N0     &kp U     &kp N8/*Ø?*/ &kp EQUAL
+/* Row 0 – function row removed */
+&trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans &trans
+/* Row 1 */ */
+&kp ESC   &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp EQUAL
 /* Row 1 */
-&kp TAB   &kp B    &kp S     &kp H     &kp K    &kp Q             &kp P    &kp G    &kp A      &kp E     &kp FSLH     &kp GRAVE
+&kp TAB   &kp B   &kp F   &kp L   &kp K   &kp Q           &kp P   &kp G   &kp O   &kp U   &kp FSLH &kp GRAVE
 /* Row 2 */
-&kp MINUS &kp N    &kp V     &kp J     &kp T    &kp M             &kp Y    &kp C    &kp COMMA  &kp DOT   &kp I         &kp BSLH
+&kp MINUS &kp N   &kp S   &kp H   &kp T   &kp M           &kp Y   &kp C   &kp A   &kp E   &kp I   &kp BSLH
 /* Row 3 */
-&kp LCTRL &kp X    &kp LBKT  &kp RBKT  &kp D    &kp Z             &kp SQT  &kp W    &kp SEMI   &kp LALT  &kp HOME      &kp END
-/* Row 4 (thumbs — upper) */
-&trans    &trans   &trans    &kp RET   &kp R    &kp LSHFT         &kp RSHFT &kp SPACE &kp BSPC  &trans   &trans        &trans
-/* Row 5 (thumbs — lower) */
-&trans    &trans   &trans    &mo 1     &kp LGUI &mo 2             &mo 2    &kp LGUI &mo 1     &trans   &trans        &trans
+&kp LCTRL &kp X   &kp V   &kp J   &kp D   &kp Z           &kp SQT &kp W   &kp COMMA &kp DOT &kp HOME &kp END
+/* Row 4 (thumb top) */
+&trans    &trans  &trans  &kp RET &kp R   &kp LSHFT       &kp RSHFT &kp SPACE &kp BSPC  &trans  &trans  &trans
+/* Row 5 (thumb bottom) */
+&trans    &trans  &trans  &mo 1   &kp LGUI &mo 2          &mo 2   &kp LGUI &mo 1  &trans  &trans  &trans
             >;
         };
 
