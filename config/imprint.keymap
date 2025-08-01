@@ -14,15 +14,15 @@
 
         default_layer {
             bindings = <
-// Row 0 eliminated—function keys demanded too much reach
-// Previous rows shift up, maintaining their relationships
+// Row eliminated—reach dies here
+// Rows 0-3: Full width glory (12 × 4 = 48)
 &kp ESCAPE        &kp N1  &kp N2            &kp N3             &kp N4   &kp N5                          &kp N6           &kp N7         &kp N8         &kp N9         &kp N0     &kp EQUAL
 &kp TAB           &kp B   &kp F             &kp L              &kp K    &kp Q                           &kp P            &kp G          &kp O          &kp U          &kp SLASH  &kp GRAVE
 &kp MINUS         &kp N   &kp S             &kp H              &kp T    &kp M                           &kp Y            &kp C          &kp A          &kp E          &kp I      &kp NON_US_BACKSLASH
 &kp LEFT_CONTROL  &kp X   &kp V             &kp J              &kp D    &kp Z                           &kp SQT          &kp W          &kp COMMA      &kp PERIOD     &kp HOME   &kp END
-// Bottom row—only middle columns survive. Outer positions become transparent
-&trans            &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans   &trans                          &trans           &trans         &kp SEMICOLON  &kp RIGHT_ALT  &trans     &trans
-// Thumb clusters—unchanged, perfect as they are
+// Row 4: Precision surgery—4 survivors (cols 2, 3, 10, 11)
+&kp LEFT_BRACKET  &kp RIGHT_BRACKET                                                                                      &kp SEMICOLON  &kp RIGHT_ALT
+// Thumb clusters: 12 keys total (6 × 2)
                                                                &kp RET  &kp R         &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp SPACE      &kp DELETE
                                                                &mo 2    &kp LEFT_GUI  &mo 1             &mo 1            &kp RIGHT_GUI  &mo 2
             >;
@@ -30,13 +30,13 @@
 
         Numpad_Nav_Layer {
             bindings = <
-// Top row gone—numbers live in the matrix now
+// Rows 0-3: Full grid
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans     &trans  &trans
 &trans  &trans  &kp N7  &kp N8  &kp N9  &trans            &trans  &kp HOME  &kp UP    &kp END    &trans  &trans
 &trans  &trans  &kp N4  &kp N5  &kp N6  &trans            &trans  &kp LEFT  &kp DOWN  &kp RIGHT  &trans  &trans
 &trans  &trans  &kp N1  &kp N2  &kp N3  &trans            &trans  &trans    &trans    &trans     &trans  &trans
-// Bottom row maintains the pattern—only middle columns active
-&trans  &trans  &trans  &kp N0  &trans  &trans            &trans  &trans    &trans    &trans     &trans  &trans
+// Row 4: Four keys only
+&trans  &kp N0                                                               &trans    &trans
 // Thumb clusters
                                 &trans  &trans  &trans    &trans  &trans    &trans
                                 &trans  &trans  &trans    &trans  &trans    &trans
@@ -45,13 +45,13 @@
 
         Keyboard_Control_Layer {
             bindings = <
-// System control concentrated in reachable zones
+// System control matrix
 &bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans           &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
 &sys_reset   &trans        &trans        &trans        &trans        &trans                  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
 &bootloader  &trans        &trans        &trans        &trans        &trans                  &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
 &to 4        &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &to 4
-// Bottom row—layer switching lives in the middle
-&trans       &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &trans
+// Row 4: Layer switching lives in the center
+&trans        &trans                                                                                           &trans           &trans
 // Thumb clusters
                                                        &trans        &trans        &trans    &trans           &trans           &trans
                                                        &trans        &trans        &trans    &trans           &trans           &trans
@@ -60,13 +60,13 @@
 
         Auto_Mouse_Layer {
             bindings = <
-// Mouse control stays minimal
+// Mouse territory
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &mkp RCLK  &mkp MCLK  &mkp LCLK  &trans            &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
-// Bottom row follows the pattern
-&trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
+// Row 4: Four positions
+&trans     &trans                                                                  &trans  &trans
 // Thumb clusters
                                       &trans     &trans  &trans    &trans  &trans  &trans
                                       &trans     &trans  &trans    &trans  &trans  &trans
@@ -75,14 +75,14 @@
 
         factory_test {
             bindings = <
-// Test pattern adjusted for new geometry
+// Test pattern—every key proves itself
 &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7            &kp N8  &kp N9  &kp N0  &kp N1  &kp N2  &kp N3
 &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9            &kp N0  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5
 &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp N1            &kp N2  &kp N3  &kp N4  &kp N5  &kp N6  &kp N7
 &kp N8  &kp N9  &kp N0  &kp N1  &kp N2  &kp N3            &kp N4  &kp N5  &kp N6  &kp N7  &kp N8  &kp N9
-// Bottom row—only middle positions tested
-&trans  &trans  &kp N2  &kp N3  &trans  &trans            &trans  &trans  &kp N8  &kp N9  &trans  &trans
-// Thumb clusters maintain test coverage
+// Row 4: Test the survivors
+&kp N2  &kp N3                                                             &kp N8  &kp N9
+// Thumb clusters tested
                                 &kp N1  &kp N2  &kp N3    &kp N4  &kp N5  &kp N6
                                 &kp N7  &kp N8  &kp N9    &kp N0  &kp N1  &kp N2
             >;
@@ -92,11 +92,11 @@
 
 // right hand trackball configuration
 
-&trackball_peripheral_listener {
-    input-processors =
-     activate layer 3 within 500ms of the trackball moving
-    <&zip_temp_layer 3 500>;
- };
+// &trackball_peripheral_listener {
+//    input-processors =
+//     activate layer 3 within 500ms of the trackball moving
+//     <&zip_temp_layer 3 500>;
+// };
 
 //left hand trackball configuration
 
