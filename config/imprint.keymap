@@ -7,24 +7,34 @@
 #include <dt-bindings/zmk/rgb.h>
 
 / {
+    /* Using the original transform is fine because we still present a 6×12 rectangle. */
     chosen { zmk,matrix-transform = &imprint_function_row_full_bottom_row; };
 
     keymap {
         compatible = "zmk,keymap";
 
+        /* ──────────────────────────────── Default Layer ─────────────────────────────── */
         default_layer {
+            /* Function‑row switches are absent on the PCB → mark them &trans.  */
             bindings = <
-&kp ESC    &kp F1  &kp F2    &kp F3    &kp F4    &kp F5              &kp F6     &kp F7    &kp F8     &kp F9    &kp F10   &kp F11
-&kp EQUAL  &kp N1  &kp N2    &kp N3    &kp N4    &kp N5              &kp N6     &kp N7    &kp N8     &kp N9    &kp N0    &kp MINUS
-&kp TAB    &kp Q   &kp W     &kp E     &kp R     &kp T               &kp Y      &kp U     &kp I      &kp O     &kp P     &kp BSLH
-&kp LCTRL  &kp A   &kp S     &kp D     &kp F     &kp G               &kp H      &kp J     &kp K      &kp L     &kp SEMI  &kp SQT
-&kp LSHFT  &kp Z   &kp X     &kp C     &kp V     &kp B               &kp N      &kp M     &kp COMMA  &kp DOT   &kp FSLH  &kp RSHFT
-&trans     &trans  &kp LGUI  &kp LALT  &trans                                   &trans    &kp LBKT   &kp RBKT  &trans    &trans
+/* Row 0 (holes) */
+&kp ESC   &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
+/* Row 1 */
+&kp EQUAL &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
+/* Row 2 */
+&kp TAB   &kp Q   &kp W   &kp E   &kp R   &kp T           &kp Y   &kp U   &kp I   &kp O   &kp P   &kp BSLH
+/* Row 3 */
+&kp LCTRL &kp A   &kp S   &kp D   &kp F   &kp G           &kp H   &kp J   &kp K   &kp L   &kp SEMI &kp SQT
+/* Row 4 */
+&kp LSHFT &kp Z   &kp X   &kp C   &kp V   &kp B           &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH &kp RSHFT
+/* Row 5 (home‑cluster & thumbs) */
+&trans    &trans  &kp LGUI &kp LALT &trans                &trans  &kp LBKT &kp RBKT &trans &trans
                                        &kp RET   &kp DEL  &kp ESC    &kp GRAVE  &kp BSPC  &kp SPACE
                                        &kp LGUI  &mo 1    &mo 2      &kp CAPS   &mo 2     &mo 1
             >;
         };
 
+        /* ─────────────────────────────── Numpad / Nav Layer ─────────────────────────── */
         Numpad_Nav_Layer {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans     &trans  &trans
@@ -38,6 +48,7 @@
             >;
         };
 
+        /* ─────────────────────────────── Keyboard Control Layer ─────────────────────── */
         Keyboard_Control_Layer {
             bindings = <
 &trans       &trans        &trans        &trans        &trans        &trans                  &trans  &trans           &trans           &trans           &trans           &trans
@@ -51,6 +62,7 @@
             >;
         };
 
+        /* ─────────────────────────────── Auto‑Mouse Layer ───────────────────────────── */
         Auto_Mouse_Layer {
             bindings = <
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -64,6 +76,7 @@
             >;
         };
 
+        /* ─────────────────────────────── Factory‑Test Layer ─────────────────────────── */
         factory_test {
             bindings = <
 &kp N0  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp N1
@@ -79,22 +92,20 @@
     };
 };
 
-// right hand trackball configuration
+/* ───────────────────────── Trackball Config ───────────────────────── */
 
 // &trackball_peripheral_listener {
-//    input-processors =
-//     activate layer 3 within 500ms of the trackball moving
-//     <&zip_temp_layer 3 500>;
+//     input-processors =
+//         /* activate layer 3 within 500 ms of the trackball moving */
+//         <&zip_temp_layer 3 500>;
 // };
-
-//left hand trackball configuration
 
 &trackball_central_listener {
     input-processors =
-        // multiply sensitivity by 1, divide by 3 (make it slower for scrolling),
+        /* make scrolling slower: ×1÷3 */
         <&zip_xy_scaler 1 3>,
-        // make this trackball output scrolling events by default instead of cursor movement,
+        /* output scroll events instead of cursor movement */
         <&zip_xy_to_scroll_mapper>,
-        // invert vertical scrolling so that the view moves in the same direction as the top of the trackball.,
+        /* invert vertical scroll so content follows ball top */
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
