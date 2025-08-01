@@ -8,33 +8,31 @@
 
 / {
     /* Using the original transform is fine because we still present a 6×12 rectangle. */
+
     chosen { zmk,matrix-transform = &imprint_function_row_full_bottom_row; };
 
     keymap {
         compatible = "zmk,keymap";
 
         /* ──────────────────────────────── Default Layer ─────────────────────────────── */
+
         default_layer {
             /* Function‑row switches are absent on the PCB → mark them &trans.  */
+
             bindings = <
-/* Row 0 (holes) */
-&trans &trans &trans &trans &trans &trans              &trans &trans &trans &trans &trans &trans
-/* Row 1 */
-&kp EQUAL &kp N1  &kp N2  &kp N3  &kp N4  &kp N5          &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp MINUS
-/* Row 2 */
-&kp TAB   &kp Q   &kp W   &kp E   &kp R   &kp T           &kp Y   &kp U   &kp I   &kp O   &kp P   &kp BSLH
-/* Row 3 */
-&kp LCTRL &kp A   &kp S   &kp D   &kp F   &kp G           &kp H   &kp J   &kp K   &kp L   &kp SEMI &kp SQT
-/* Row 4 */
-&kp LSHFT &kp Z   &kp X   &kp C   &kp V   &kp B           &kp N   &kp M   &kp COMMA &kp DOT &kp FSLH &kp RSHFT
-/* Row 5 (home‑cluster & thumbs) */
-&trans    &trans  &kp LGUI &kp LALT &trans                &trans  &kp LBKT &kp RBKT &trans &trans
-                                       &kp RET   &kp DEL  &kp ESC    &kp GRAVE  &kp BSPC  &kp SPACE
-                                       &kp LGUI  &mo 1    &mo 2      &kp CAPS   &mo 2     &mo 1
+&trans            &trans  &trans            &trans             &trans   &trans                          &trans           &trans         &trans         &trans         &trans     &trans
+&kp ESCAPE        &kp N1  &kp N2            &kp N3             &kp N4   &kp N5                          &kp N6           &kp N7         &kp N8         &kp N9         &kp N0     &kp EQUAL
+&kp TAB           &kp B   &kp F             &kp L              &kp K    &kp Q                           &kp P            &kp G          &kp O          &kp U          &kp SLASH  &kp GRAVE
+&kp MINUS         &kp N   &kp S             &kp H              &kp T    &kp M                           &kp Y            &kp C          &kp A          &kp E          &kp I      &kp NON_US_BACKSLASH
+&kp LEFT_CONTROL  &kp X   &kp V             &kp J              &kp D    &kp Z                           &kp SQT          &kp W          &kp COMMA      &kp PERIOD     &kp HOME   &kp END
+&trans            &trans  &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans                                                    &trans         &kp SEMICOLON  &kp RIGHT_ALT  &trans     &trans
+                                                               &kp RET  &kp R         &kp LEFT_SHIFT    &kp RIGHT_SHIFT  &kp SPACE      &kp DELETE
+                                                               &mo 2    &kp LEFT_GUI  &mo 1             &mo 1            &kp RIGHT_GUI  &mo 2
             >;
         };
 
         /* ─────────────────────────────── Numpad / Nav Layer ─────────────────────────── */
+
         Numpad_Nav_Layer {
             bindings = <
 &trans  &trans  &trans  &trans  &trans  &trans            &trans  &trans    &trans    &trans     &trans  &trans
@@ -49,20 +47,22 @@
         };
 
         /* ─────────────────────────────── Keyboard Control Layer ─────────────────────── */
+
         Keyboard_Control_Layer {
             bindings = <
-&trans       &trans        &trans        &trans        &trans        &trans                  &trans  &trans           &trans           &trans           &trans           &trans
-&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans  &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
+&trans       &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &trans
+&bt BT_CLR   &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_SEL 4            &trans           &rgb_ug RGB_TOG  &rgb_ug RGB_EFF  &trans           &trans           &trans
 &sys_reset   &trans        &trans        &trans        &trans        &trans                  &rgb_ug RGB_TOG  &rgb_ug RGB_HUI  &rgb_ug RGB_SAI  &rgb_ug RGB_BRI  &rgb_ug RGB_SPI  &sys_reset
-&bootloader  &trans        &trans        &trans        &trans        &trans                  &trans  &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
-&to 4        &trans        &trans        &trans        &trans        &trans                  &trans  &trans           &trans           &trans           &trans           &to 4
-&to 4        &trans        &trans        &trans        &trans                                        &trans           &trans           &trans           &trans           &to 4
-                                                       &trans        &trans        &trans    &trans  &trans           &trans
-                                                       &trans        &trans        &trans    &trans  &trans           &trans
+&bootloader  &trans        &trans        &trans        &trans        &trans                  &trans           &rgb_ug RGB_HUD  &rgb_ug RGB_SAD  &rgb_ug RGB_BRD  &rgb_ug RGB_SPD  &bootloader
+&to 4        &trans        &trans        &trans        &trans        &trans                  &trans           &trans           &trans           &trans           &trans           &to 4
+&to 4        &trans        &trans        &trans        &trans                                                 &trans           &trans           &trans           &trans           &to 4
+                                                       &trans        &trans        &trans    &trans           &trans           &trans
+                                                       &trans        &trans        &trans    &trans           &trans           &trans
             >;
         };
 
         /* ─────────────────────────────── Auto‑Mouse Layer ───────────────────────────── */
+
         Auto_Mouse_Layer {
             bindings = <
 &trans  &trans  &trans     &trans     &trans     &trans            &trans  &trans  &trans  &trans  &trans  &trans
@@ -77,6 +77,7 @@
         };
 
         /* ─────────────────────────────── Factory‑Test Layer ─────────────────────────── */
+
         factory_test {
             bindings = <
 &kp N0  &kp N1  &kp N2  &kp N3  &kp N4  &kp N5            &kp N6  &kp N7  &kp N8  &kp N9  &kp N0  &kp N1
@@ -93,7 +94,6 @@
 };
 
 /* ───────────────────────── Trackball Config ───────────────────────── */
-
 // &trackball_peripheral_listener {
 //     input-processors =
 //         /* activate layer 3 within 500 ms of the trackball moving */
@@ -102,10 +102,10 @@
 
 &trackball_central_listener {
     input-processors =
-        /* make scrolling slower: ×1÷3 */
+        /* make scrolling slower: ×1÷3 */,
         <&zip_xy_scaler 1 3>,
-        /* output scroll events instead of cursor movement */
+        /* output scroll events instead of cursor movement */,
         <&zip_xy_to_scroll_mapper>,
-        /* invert vertical scroll so content follows ball top */
+        /* invert vertical scroll so content follows ball top */,
         <&zip_scroll_transform INPUT_TRANSFORM_Y_INVERT>;
 };
